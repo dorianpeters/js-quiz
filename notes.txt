@@ -1,0 +1,8 @@
+Notes for quiz
+
+JQuery code template:
+$(document).ready(function() {
+  $('button').on('click', function() {
+  // run this function on click
+  });
+});
