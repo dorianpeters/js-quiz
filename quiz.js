@@ -1,6 +1,3 @@
-// Way too much repeated code.
-// Make show questions and answers a function
-
 var questions = [
   { 
     question: "What is my name?",
@@ -48,12 +45,8 @@ var questions = [
       if (answer == questions[counter].correctAnswer)
         numRight++;
 
-      // console.log(answer);
-      // console.log(questions[counter].correctAnswer);
-      console.log(numRight);
-      console.log(counter);
-
       counter++;
+
       if (counter >= maxQuestions) {
         document.write("Quiz is over. You got ", numRight, " out of ", maxQuestions);
         return;
@@ -68,12 +61,3 @@ var questions = [
 
     });
   });
-
-// need to write a function to refactor code
-  function displayQuestion(q) {
-    $('#question').text(q.question);
-    $('#ans0').text(q.choices[0]);
-    $('#ans1').text(q.choices[1]);
-    $('#ans2').text(q.choices[2]);
-    $('#ans3').text(q.choices[3]);
-  }
