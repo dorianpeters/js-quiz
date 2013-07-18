@@ -4,7 +4,7 @@
 var questions = [
   { 
     question: "What is my name?",
-    choices: ["David", "Dorian", "Bill", "George"],
+    choices: ["David", "ZenStunna", "Bill", "George"],
     correctAnswer: 1
   },
   {
@@ -23,23 +23,57 @@ var questions = [
   correctAnswer: 2  
   },
   {
-  question: "Which OS os my favorite?",
+  question: "Which OS is my favorite?",
   choices: ["Window 7", "Windows 8", "Linux", "Mac OS"],
   correctAnswer: 3  
   },
 ];
 
-$(document).ready(function () {
-  // Show initial question
-  var questionNum = 0;
-  $('#question').text(questions[questionNum].question);
-  $('#ans0').text(questions[questionNum].choices[0]);
-  $('#ans1').text(questions[questionNum].choices[1]);
-  $('#ans2').text(questions[questionNum].choices[2]);
-  $('#ans3').text(questions[questionNum].choices[3]);
+  $(document).ready(function () {
+    var maxQuestions = questions.length;
+    var numRight = 0;
+    var counter = 0;
 
-  $('button').on('click', function () {
-    // Show follow up questions
-    // run this function on click. Will use to advance question and talley score.
+    // display first question
+    $('#question').text(questions[counter].question);
+    $('#ans0').text(questions[counter].choices[0]);
+    $('#ans1').text(questions[counter].choices[1]);
+    $('#ans2').text(questions[counter].choices[2]);
+    $('#ans3').text(questions[counter].choices[3]);
+
+    $('button').on('click', function () {
+      var answer = ($('input[name="answers"]:checked').val());
+
+      // increment score if right
+      if (answer == questions[counter].correctAnswer)
+        numRight++;
+
+      // console.log(answer);
+      // console.log(questions[counter].correctAnswer);
+      console.log(numRight);
+      console.log(counter);
+
+      counter++;
+      if (counter >= maxQuestions) {
+        document.write("Quiz is over. You got ", numRight, " out of ", maxQuestions);
+        return;
+      }
+
+      // Show next question
+      $('#question').text(questions[counter].question);
+      $('#ans0').text(questions[counter].choices[0]);
+      $('#ans1').text(questions[counter].choices[1]);
+      $('#ans2').text(questions[counter].choices[2]);
+      $('#ans3').text(questions[counter].choices[3]);
+
+    });
   });
-});
+
+// need to write a function to refactor code
+  function displayQuestion(q) {
+    $('#question').text(q.question);
+    $('#ans0').text(q.choices[0]);
+    $('#ans1').text(q.choices[1]);
+    $('#ans2').text(q.choices[2]);
+    $('#ans3').text(q.choices[3]);
+  }
